@@ -42,11 +42,18 @@ Feature test - to limit cash added to card
 require './lib/oystercard'
 oystercard = Oystercard.new
 oystercard.top_up(100) - should give error as > limit of £90
+
 ```
 In order to pay for my journey
 As a customer
 I need my fare deducted from my card
+```
+Feature test - to check that can deduct money from oystercard
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.deduct(5)
 
+```
 In order to get through the barriers
 As a customer
 I need to touch in and out

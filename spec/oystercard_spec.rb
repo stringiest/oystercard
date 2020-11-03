@@ -23,4 +23,15 @@ describe Oystercard do
     end
   end
 
+  describe "#deduct" do
+
+    it "responds to deduct method" do
+      expect(subject).to respond_to(:deduct).with(1).argument
+    end
+
+    it "decreases balance" do
+      subject.top_up(20)
+      expect { subject.deduct(5) }.to change { subject.balance }.by -5
+    end
+  end
 end
