@@ -17,7 +17,13 @@ Error in ./spec/oystercard_spec.rb, on line 1
 In order to use public transport
 As a customer
 I want money on my card
+```
+Feature test - to check that balance is zero
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.balance (should equal zero)
 
+```
 In order to keep using public transport
 As a customer
 I want to add money to my card
