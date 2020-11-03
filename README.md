@@ -5,10 +5,10 @@ Challenge to create an Oystercard-type system.
 ## Project set-up
 
 ### Initial rspec run
-Produces a NameError: uninitialized constant Oystercard
+Produces a NameError: uninitialized constant Oystercard  
 Error in ./spec/oystercard_spec.rb, on line 1
 
-*Error means that the constant Oystercard isn't recognised.  Define Oystercard in a separate file and require the file in the spec.*
+*Error means that the constant Oystercard isn't recognised: define Oystercard in a separate file and require the file in the spec.*
 
 
 ## User Stories
