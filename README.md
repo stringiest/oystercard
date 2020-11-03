@@ -27,11 +27,22 @@ oystercard.balance (should equal zero)
 In order to keep using public transport
 As a customer
 I want to add money to my card
+```
+Feature test - to check that can add money to oystercard
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.top_up(5)
 
+```
 In order to protect my money
 As a customer
 I don't want to put too much money on my card
-
+```
+Feature test - to limit cash added to card
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.top_up(100) - should give error as > limit of £90
+```
 In order to pay for my journey
 As a customer
 I need my fare deducted from my card
