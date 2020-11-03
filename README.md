@@ -57,7 +57,24 @@ oystercard.deduct(5)
 In order to get through the barriers
 As a customer
 I need to touch in and out
+```
+Feature test - to check that I can touch in
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.touch_in
 
+Feature test - to check that I can touch out
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.touch_out
+
+Feature test - to test in_journey is true after touch_in
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.touch_in
+oystercard.in_journey? == true
+
+```
 In order to pay for my journey
 As a customer
 I need to have the minimum amount for a single journey
