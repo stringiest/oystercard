@@ -23,17 +23,7 @@ describe Oystercard do
     end
   end
 
-  describe "#deduct" do
-
-    it "responds to deduct method" do
-      expect(subject).to respond_to(:deduct).with(1).argument
-    end
-
-    it "decreases balance" do
-      subject.top_up(20)
-      expect { subject.deduct(5) }.to change { subject.balance }.by -5
-    end
-  end
+  # removed 'describe "#deduct" do' tests as no longer relevant
 
   describe "#in_journey?" do
 
@@ -60,6 +50,15 @@ describe Oystercard do
 
     it "raises an error if balance < 1" do
       expect { subject.touch_in }.to raise_error "Insufficient funds"
+    end
+  end
+
+  describe "#touch_out" do
+
+    it "decreases balance by minimum fare" do
+      subject.top_up(20)
+      subject.touch_in
+      expect { subject.touch_out }.to change { subject.balance }.by -Oystercard::MINIMUM_FARE
     end
   end
 

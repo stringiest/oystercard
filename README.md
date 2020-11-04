@@ -88,7 +88,14 @@ oystercard.touch_in  - presents error as not topped up
 In order to pay for my journey
 As a customer
 I need to pay for my journey when it's complete
+```
+Feature test - to check that can deduct money from oystercard  
+require './lib/oystercard'  
+oystercard = Oystercard.new  
+oystercard.top_up(20)  
+oystercard.touch_out - expect to return 19
 
+```
 In order to pay for my journey
 As a customer
 I need to know where I've travelled from
