@@ -78,7 +78,13 @@ oystercard.in_journey? == true
 In order to pay for my journey
 As a customer
 I need to have the minimum amount for a single journey
+```
+Feature test - to check that minimum balance required for travel  
+require './lib/oystercard'  
+oystercard = Oystercard.new  
+oystercard.touch_in  - presents error as not topped up
 
+```
 In order to pay for my journey
 As a customer
 I need to pay for my journey when it's complete
