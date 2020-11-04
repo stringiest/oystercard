@@ -3,6 +3,7 @@ require 'oystercard'
 describe Oystercard do
 
 let(:station) { double :station }
+let(:station2) { double :station }
 
   it "has an opening balance of zero" do
     expect(subject.balance).to eq 0
@@ -42,7 +43,7 @@ let(:station) { double :station }
     it "can touch out" do
       subject.top_up(20)
       subject.touch_in(station)
-      subject.touch_out
+      subject.touch_out(station2)
       expect(subject).not_to be_in_journey
     end
 
@@ -67,8 +68,31 @@ let(:station) { double :station }
     it "decreases balance by minimum fare" do
       subject.top_up(20)
       subject.touch_in(station)
-      expect { subject.touch_out }.to change { subject.balance }.by -Oystercard::MINIMUM_FARE
+      expect { subject.touch_out station2 }.to change { subject.balance }.by -Oystercard::MINIMUM_FARE
     end
+
+  end
+
+  describe "#journey_history" do
+
+    it "initializes an empty array" do
+      expect(subject.journey_history).to eq []
+    end
+
+    it "add entry station to journey_history array" do
+      subject.top_up(20)
+      subject.touch_in(station)
+      expect(subject.journey_history[-1][:entry]).to eq station
+    end
+
+    it "add exit station to journey_history array" do
+      subject.top_up(20)
+      subject.touch_in(station)
+      subject.touch_out(station2)
+      expect(subject.journey_history[0][:exit]).to eq station2
+      # journey_history[0] to check that exit is in same hash as entry
+    end
+
   end
 
 end

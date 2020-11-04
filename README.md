@@ -93,17 +93,35 @@ Feature test - to check that can deduct money from oystercard
 require './lib/oystercard'  
 oystercard = Oystercard.new  
 oystercard.top_up(20)  
+oystercard.touch_in  
 oystercard.touch_out - expect to return 19
 
 ```
 In order to pay for my journey
 As a customer
 I need to know where I've travelled from
+```
+Feature test - to check that start station is stored  
+require './lib/oystercard'  
+oystercard = Oystercard.new  
+oystercard.top_up(20)  
+oystercard.touch_in(station)  
+\@entry_station == station - should return true
 
+```
 In order to know where I have been
 As a customer
 I want to see to all my previous trips
+```
+Feature test - to check that end station is stored  
+require './lib/oystercard'
+oystercard = Oystercard.new
+oystercard.top_up(20)
+oystercard.touch_in(station)
+oystercard.touch_out(station)
+oystercard.journey_history[-1] == {entry: station, exit: station} - should return true
 
+```
 In order to know how far I have travelled
 As a customer
 I want to know what zone a station is in
