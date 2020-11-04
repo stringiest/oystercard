@@ -114,18 +114,25 @@ As a customer
 I want to see to all my previous trips
 ```
 Feature test - to check that end station is stored  
-require './lib/oystercard'
-oystercard = Oystercard.new
-oystercard.top_up(20)
-oystercard.touch_in(station)
-oystercard.touch_out(station)
+require './lib/oystercard'  
+oystercard = Oystercard.new  
+oystercard.top_up(20)  
+oystercard.touch_in(station)  
+oystercard.touch_out(station)  
 oystercard.journey_history[-1] == {entry: station, exit: station} - should return true
 
 ```
 In order to know how far I have travelled
 As a customer
 I want to know what zone a station is in
+```
+Feature test - a station knows what zone it is in  
+require './lib/station'  
+station = Station.new("Old Street", 1)  
+station.zone == 1 - should return true  
+station.name == "Old Street" - should return true
 
+```
 In order to be charged correctly
 As a customer
 I need a penalty charge deducted if I fail to touch in or out
