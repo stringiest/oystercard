@@ -59,9 +59,14 @@ let(:station2) { double :station }
     it "stores entry station" do
       subject.top_up(20)
       subject.touch_in(station)
-      expect(subject.entry_station).to eq station
+      expect(subject.journey.entry_station).to eq station
     end
 
+    it "checks if there is already an active journey" do
+      subject.top_up(20)
+      subject.touch_in(station)
+      expect { subject.touch_in(station) }.to change { subject.balance }.by -6
+    end
   end
 
   describe "#touch_out" do
@@ -80,18 +85,11 @@ let(:station2) { double :station }
       expect(subject.journey_history).to eq []
     end
 
-    it "add entry station to journey_history array" do
-      subject.top_up(20)
-      subject.touch_in(station)
-      expect(subject.journey_history[-1][:entry]).to eq station
-    end
-
-    it "add exit station to journey_history array" do
+    it "add journey to journey_history array" do
       subject.top_up(20)
       subject.touch_in(station)
       subject.touch_out(station2)
-      expect(subject.journey_history[0][:exit]).to eq station2
-      # journey_history[0] to check that exit is in same hash as entry
+      expect(subject.journey_history[0]).to be_an_instance_of Journey
     end
 
   end
