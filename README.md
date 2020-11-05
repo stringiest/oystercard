@@ -4,7 +4,7 @@ Challenge to create an Oystercard-type system.
 
 ## Class diagram
 
-![Class diagram for oystercard challenge](https://github.com/stringiest/oystercard/blob/main/Class%20diagram.png)
+![Class diagram for oystercard challenge](https://github.com/stringiest/oystercard/blob/main/Class%20diagram.png "Class diagram")
 
 ## Project set-up
 
@@ -25,7 +25,7 @@ I want money on my card
 Feature test - to check that balance is zero  
 require './lib/oystercard'  
 oystercard = Oystercard.new  
-oystercard.balance (should equal zero)
+oystercard.balance == 0 - should return true
 
 ```
 In order to keep using public transport
@@ -86,7 +86,7 @@ I need to have the minimum amount for a single journey
 Feature test - to check that minimum balance required for travel  
 require './lib/oystercard'  
 oystercard = Oystercard.new  
-oystercard.touch_in  - presents error as not topped up
+oystercard.touch_in  - presents error as balance < 1
 
 ```
 In order to pay for my journey
