@@ -4,7 +4,7 @@ Challenge to create an Oystercard-type system.
 
 ## Class diagram
 
-![Class diagram for oystercard challenge](https://github.com/stringiest/oystercard/blob/main/mermaid-diagram-20201104181319.png)
+![Class diagram for oystercard challenge](https://github.com/stringiest/oystercard/blob/main/Class%20diagram.png)
 
 ## Project set-up
 
