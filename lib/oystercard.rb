@@ -24,6 +24,7 @@ class Oystercard
   end
 
   def touch_out(station)
+    @journey = Journey.new if !in_journey?
     @journey.finish(station)
     charge_and_reset
   end

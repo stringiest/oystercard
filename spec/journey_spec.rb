@@ -21,6 +21,11 @@ describe Journey do
     expect(subject.finish(exit_station)).to eq(subject)
   end
 
+  it "returns a penalty fare if no entry station is given" do
+    subject.finish(exit_station)
+    expect(subject.fare).to eq Journey::PENALTY_FARE
+  end
+
   context "given an entry station" do
     subject {described_class.new(entry_station)}
 
