@@ -1,3 +1,5 @@
+require_relative 'journey_log'
+
 class Journey
   MINIMUM_FARE = 1
   PENALTY_FARE = 6
@@ -10,7 +12,7 @@ class Journey
 
   def finish(exit_station)
     @exit_station = exit_station
-    self
+    self # resets exit_station to nil
   end
 
   def complete?

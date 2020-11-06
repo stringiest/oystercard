@@ -20,7 +20,7 @@ class Oystercard
     charge_and_reset if in_journey?
 
     fail "Insufficient funds" if @balance < MINIMUM_FARE
-    @journey = Journey.new(station)
+    @journey = Journey.new(station) # will refer to journey_log
   end
 
   def touch_out(station)
